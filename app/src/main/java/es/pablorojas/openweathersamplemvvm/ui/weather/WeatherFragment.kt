@@ -3,14 +3,27 @@ package es.pablorojas.openweathersamplemvvm.ui.weather
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.lifecycle.ViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import es.pablorojas.openweathersamplemvvm.R
+import es.pablorojas.openweathersamplemvvm.core.BaseFragment
+import es.pablorojas.openweathersamplemvvm.databinding.FragmentWeatherBinding
 
 @AndroidEntryPoint
-class WeatherFragment : Fragment(R.layout.fragment_weather) {
+class WeatherFragment : BaseFragment<FragmentWeatherBinding>(FragmentWeatherBinding::inflate, R.layout.fragment_weather) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setupView() {
+
     }
+
+    override fun setupListeners() {
+        binding?.forecastBtn?.setOnClickListener {
+            navController.navigate(R.id.action_weatherFragment_to_forecastFragment)
+        }
+    }
+
+    override fun setupObservers() {
+    }
+
 
 }

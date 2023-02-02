@@ -24,7 +24,6 @@ object Version {
     const val material = "1.8.0"
     const val constraint_layout = "2.1.4"
     const val navigation = "2.5.3"
-    const val navigation_safeargs = "2.4.1"
     const val lifecycle = "2.5.1"
     const val room = "2.5.0"
 
