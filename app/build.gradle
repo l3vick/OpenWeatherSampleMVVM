@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    namespace = Android.applicationID
+    compileSdk = Android.compileSdk
+
+    defaultConfig {
+        applicationId = Android.applicationID
+        minSdk  = Android.minSdkVersion
+        targetSdk = Android.targetSdkVersion
+        versionCode = Android.versionCode
+        versionName = Android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'BASE_URL', "\"https://api.openweathermap.org/data/2.5/\""
+        buildConfigField 'String', 'API_KEY', "\"a8042b44f26db02b28c5916d6a000fda\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+
+    implementation(AndroidLibs.core_ktx)
+    implementation(AndroidLibs.app_compat)
+    implementation(AndroidLibs.material)
+    implementation(AndroidLibs.constraint_layout)
+
+    //Navigation
+    implementation(AndroidLibs.navigation_fragment)
+    implementation(AndroidLibs.navigation_ui)
+
+    // Architectural Components
+    implementation(AndroidLibs.viewmodel)
+
+    // Coroutine Lifecycle Scopes
+    implementation(AndroidLibs.lifecycle_runtime)
+    implementation(AndroidLibs.lifecycle_livedata)
+    // Room
+    implementation(AndroidLibs.room)
+
+    //Kotlin
+    implementation(Kotlin.std_lib)
+    implementation(Kotlin.coroutines_core)
+    implementation(Kotlin.coroutines)
+
+    //Hilt Dagger
+    implementation(Libs.hilt)
+    kapt(Libs.hilt_compiler)
+
+    // Retrofit
+    implementation(Libs.retrofit)
+    implementation(Libs.retrofit_gson_converter)
+    implementation(Libs.logging_interceptor)
+
+    testImplementation(TestLibs.junit)
+    androidTestImplementation(TestLibs.junit_ext)
+    androidTestImplementation(TestLibs.espresso_core)
+
+}
