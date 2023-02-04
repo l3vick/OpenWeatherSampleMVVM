@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="roboto_light">sans-serif-light</string>
+    <string name="roboto_medium">sans-serif-medium</string>
+    <string name="roboto_regular">sans-serif</string>
+    <string name="roboto_condensed">sans-serif-condensed</string>
+    <string name="roboto_black">sans-serif-black</string>
+    <string name="roboto_thin">sans-serif-thin</string>
+
+    <style name="btn_borderless_clear" parent="Base.Widget.AppCompat.Button">
+        <item name="android:fontFamily">@string/roboto_condensed</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/text_view_color_state_primary_clear</item>
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="text_regular_gray_clear_15">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:fontFamily">@string/roboto_regular</item>
+        <item name="android:textColor">@color/color_primary_dark</item>
+    </style>
+
+</resources>

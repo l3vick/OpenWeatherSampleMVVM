@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = Android.applicationID
-        minSdk  = Android.minSdkVersion
+        minSdk = Android.minSdkVersion
         targetSdk = Android.targetSdkVersion
         versionCode = Android.versionCode
         versionName = Android.versionName
@@ -59,11 +59,22 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation(AndroidLibs.lifecycle_runtime)
     implementation(AndroidLibs.lifecycle_livedata)
+    implementation 'androidx.lifecycle:lifecycle-service:2.5.1'
+
+    //Compose-Lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha05")
+
+    //Play Services
+    implementation(AndroidLibs.play_services)
+
     // Room
     implementation(AndroidLibs.room)
 
+    //DataStore
+    implementation(AndroidLibs.data_store)
+
     //Kotlin
-    implementation(Kotlin.std_lib)
+    //implementation(Kotlin.std_lib)
     implementation(Kotlin.coroutines_core)
     implementation(Kotlin.coroutines)
 
@@ -75,6 +86,9 @@ dependencies {
     implementation(Libs.retrofit)
     implementation(Libs.retrofit_gson_converter)
     implementation(Libs.logging_interceptor)
+
+    //Lottie Animations
+    implementation(Libs.lottie)
 
     testImplementation(TestLibs.junit)
     androidTestImplementation(TestLibs.junit_ext)

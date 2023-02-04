@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">OpenWeatherSampleMVVM</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //Lottie
+    <string name="lottie_loading_url">https://assets2.lottiefiles.com/packages/lf20_kxsd2ytq.json</string>
+    <string name="lottie_network_failure_url">https://assets6.lottiefiles.com/packages/lf20_93UheN.json</string>
+
 </resources>
