@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_primary_dark"
+    android:padding="@dimen/padding_32">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cityTv"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tomorrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_48"
+        android:background="@drawable/background_tomorrow_gradient"
+        android:padding="@dimen/padding_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cityTv">
+
+
+        <TextView
+            android:id="@+id/tomorrowTv"
+            style="@style/text_content_forecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tomorrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tempTv"
+            style="@style/text_content_forecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_8"
+            app:layout_constraintEnd_toEndOf="@+id/tomorrowTv"
+            app:layout_constraintStart_toStartOf="@+id/tomorrowTv"
+            app:layout_constraintTop_toBottomOf="@+id/tomorrowTv" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/weatherIv"
+            android:layout_width="@dimen/icon_100"
+            android:layout_height="@dimen/icon_100"
+            android:layout_marginEnd="@dimen/padding_16"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tempTv">
+
+            <TextView
+                android:id="@+id/highTempTv"
+                style="@style/text_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_8"
+                app:layout_constraintBottom_toBottomOf="@+id/highTempIv"
+                app:layout_constraintStart_toEndOf="@+id/highTempIv"
+                app:layout_constraintTop_toTopOf="@+id/highTempIv" />
+
+            <TextView
+                android:id="@+id/lowTempTv"
+                style="@style/text_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_8"
+                app:layout_constraintBottom_toBottomOf="@+id/lowTempIv"
+                app:layout_constraintStart_toEndOf="@+id/lowTempIv"
+                app:layout_constraintTop_toTopOf="@+id/lowTempIv" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/lowTempIv"
+                android:layout_width="@dimen/icon_30"
+                android:layout_height="@dimen/icon_30"
+                android:layout_marginStart="@dimen/padding_16"
+                android:src="@drawable/low_t"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/highTempTv" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/highTempIv"
+                android:layout_width="@dimen/icon_30"
+                android:layout_height="@dimen/icon_30"
+                android:src="@drawable/high_t"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvForecast"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/padding_16"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tomorrow" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,9 +16,12 @@
     <dimen name="text_20">20sp</dimen>
     <dimen name="text_30">30sp</dimen>
     <dimen name="text_50">50sp</dimen>
+    <dimen name="text_80">80sp</dimen>
 
     <dimen name="icon_30">30dp</dimen>
+    <dimen name="icon_40">40dp</dimen>
     <dimen name="icon_50">50dp</dimen>
     <dimen name="icon_100">100dp</dimen>
     <dimen name="icon_120">120dp</dimen>
+    <dimen name="item_textview_forecast_size">60dp</dimen>
 </resources>

@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.dagger.hilt.android'
-    id 'androidx.navigation.safeargs'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
 }
 
@@ -40,6 +40,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    sourceSets {
+        getByName("main").java.srcDirs("build/generated/source/navigation-args")
+    }
 }
 
 dependencies {
@@ -59,10 +63,6 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation(AndroidLibs.lifecycle_runtime)
     implementation(AndroidLibs.lifecycle_livedata)
-    implementation 'androidx.lifecycle:lifecycle-service:2.5.1'
-
-    //Compose-Lifecycle
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha05")
 
     //Play Services
     implementation(AndroidLibs.play_services)

@@ -3,7 +3,9 @@
     <color name="color_primary">#FFC107</color>
     <color name="color_primary_dark">#FFA000</color>
     <color name="color_primary_light">#FFECB3</color>
-    <color name="color_accent">#FFEB3B</color>
+    <color name="color_accent">#1C2445</color>
+    <color name="color_accent_medium">#36489d</color>
+    <color name="color_accent_light">#4054c2</color>
 
     <color name="white">#ffffff</color>
 

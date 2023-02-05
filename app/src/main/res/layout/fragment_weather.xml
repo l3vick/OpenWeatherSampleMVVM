@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.weather.WeatherFragment">
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/progressBar"
         android:layout_width="@dimen/progress_bar"
@@ -16,36 +15,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:lottie_rawRes="@raw/progress"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_url="@string/lottie_loading_url" />
-
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/networkFail"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="false"
-        app:lottie_url="@string/lottie_network_failure_url" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/error"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="false"
-        app:lottie_rawRes="@raw/sad_error" />
+        app:lottie_loop="true"/>
 
     <include
         android:id="@+id/incWeatherContent"

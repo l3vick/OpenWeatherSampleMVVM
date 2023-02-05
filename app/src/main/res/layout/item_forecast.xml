@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_primary_dark"
+    android:paddingTop="@dimen/padding_8"
+    android:paddingBottom="@dimen/padding_8">
+
+
+    <TextView
+        android:id="@+id/dayNameTv"
+        style="@style/text_content_forecast_accent"
+        android:layout_width="@dimen/item_textview_forecast_size"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/highTempIv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/highTempTv"
+        style="@style/text_content_forecast_temp"
+        android:layout_width="@dimen/item_textview_forecast_size"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/highTempIv"
+        app:layout_constraintEnd_toStartOf="@+id/lowTempIv"
+        app:layout_constraintStart_toEndOf="@+id/highTempIv"
+        app:layout_constraintTop_toTopOf="@+id/highTempIv" />
+
+
+    <TextView
+        android:id="@+id/lowTempTv"
+        style="@style/text_content_forecast_temp"
+        android:layout_width="@dimen/item_textview_forecast_size"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/lowTempIv"
+        app:layout_constraintEnd_toStartOf="@+id/weatherIv"
+        app:layout_constraintStart_toEndOf="@+id/lowTempIv"
+        app:layout_constraintTop_toTopOf="@+id/lowTempIv" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/lowTempIv"
+        android:layout_width="@dimen/icon_30"
+        android:layout_height="@dimen/icon_30"
+        android:src="@drawable/low_t"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/lowTempTv"
+        app:layout_constraintStart_toEndOf="@id/highTempTv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/color_accent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/highTempIv"
+        android:layout_width="@dimen/icon_30"
+        android:layout_height="@dimen/icon_30"
+        android:src="@drawable/high_t"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/highTempTv"
+        app:layout_constraintStart_toEndOf="@+id/dayNameTv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/color_accent" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/weatherIv"
+        android:layout_width="@dimen/icon_40"
+        android:layout_height="@dimen/icon_40"
+        android:tint="@color/color_accent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lowTempTv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

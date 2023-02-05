@@ -19,7 +19,7 @@
         android:layout_width="@dimen/icon_120"
         android:layout_height="@dimen/icon_120"
         android:layout_marginTop="@dimen/padding_24"
-        android:tint="@color/white"
+        android:tint="@color/color_accent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cityTv" />
 
@@ -30,7 +30,7 @@
         android:layout_height="@dimen/icon_30"
         android:layout_marginEnd="@dimen/padding_8"
         android:src="@drawable/high_t"
-        android:tint="@color/white"
+        android:tint="@color/color_accent"
         app:layout_constraintBottom_toBottomOf="@id/tempDescriptionTv"
         app:layout_constraintEnd_toStartOf="@+id/highTempTv" />
 
@@ -41,7 +41,7 @@
         android:layout_height="@dimen/icon_30"
         android:layout_marginEnd="@dimen/padding_8"
         android:src="@drawable/low_t"
-        android:tint="@color/white"
+        android:tint="@color/color_accent"
         app:layout_constraintBottom_toBottomOf="@+id/tempDescriptionTv"
         app:layout_constraintEnd_toStartOf="@+id/lowTempTv" />
 
@@ -52,6 +52,7 @@
         android:layout_marginTop="@dimen/padding_64"
         android:layout_marginEnd="@dimen/padding_32"
         android:src="@drawable/sunrise"
+        android:tint="@color/color_accent"
         app:layout_constraintEnd_toStartOf="@+id/sunsetIv"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +65,7 @@
         android:layout_marginStart="@dimen/padding_32"
         android:layout_marginTop="@dimen/padding_64"
         android:src="@drawable/sunset"
+        android:tint="@color/color_accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sunriseIv"
         app:layout_constraintTop_toBottomOf="@+id/tempDescriptionTv" />
@@ -79,7 +81,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tempTv"
-        style="@style/text_title"
+        style="@style/text_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/padding_16"
@@ -108,8 +110,10 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tempDescriptionTv"
         style="@style/text_main_content"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="@+id/weatherIv"
         app:layout_constraintStart_toStartOf="@+id/weatherIv"
         app:layout_constraintTop_toBottomOf="@+id/weatherIv" />
@@ -138,20 +142,20 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/windchillLblTv"
-        style="@style/text_content"
+        style="@style/text_content_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_64"
+        android:layout_marginTop="@dimen/padding_48"
         android:text="@string/windchill_factor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sunsetTv" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/humidityLblTv"
-        style="@style/text_content"
+        style="@style/text_content_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_64"
+        android:layout_marginTop="@dimen/padding_48"
         android:text="@string/humidity"
         app:layout_constraintEnd_toStartOf="@+id/cloudinessLblTv"
         app:layout_constraintStart_toEndOf="@id/windchillLblTv"
@@ -159,10 +163,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/cloudinessLblTv"
-        style="@style/text_content"
+        style="@style/text_content_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_64"
+        android:layout_marginTop="@dimen/padding_48"
         android:text="@string/cloudiness"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sunsetTv" />
@@ -201,10 +205,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/pressureLblTv"
-        style="@style/text_content"
+        style="@style/text_content_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_48"
+        android:layout_marginTop="@dimen/padding_32"
         android:text="@string/pressure"
         app:layout_constraintEnd_toEndOf="@+id/windchillTv"
         app:layout_constraintStart_toStartOf="@+id/windchillTv"
@@ -212,10 +216,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/windSpeedLblTv"
-        style="@style/text_content"
+        style="@style/text_content_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_48"
+        android:layout_marginTop="@dimen/padding_32"
         android:text="@string/wind_speed"
         app:layout_constraintEnd_toEndOf="@id/humidityTv"
         app:layout_constraintStart_toStartOf="@+id/humidityTv"
@@ -223,10 +227,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/visibilityLblTv"
-        style="@style/text_content"
+        style="@style/text_content_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_48"
+        android:layout_marginTop="@dimen/padding_32"
         android:text="@string/visibility"
         app:layout_constraintEnd_toEndOf="@+id/cloudinessTv"
         app:layout_constraintStart_toStartOf="@+id/cloudinessTv"

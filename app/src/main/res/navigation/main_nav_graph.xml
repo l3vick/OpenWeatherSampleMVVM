@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/weatherFragment"
-    android:id="@+id/main_nav_graph">
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/weatherFragment">
 
     <fragment
         android:id="@+id/weatherFragment"
@@ -13,17 +13,33 @@
 
         <action
             android:id="@+id/action_weatherFragment_to_forecastFragment"
+            app:destination="@id/forecastFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/forecastFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
 
     <fragment
         android:id="@+id/forecastFragment"
         android:name="es.pablorojas.openweathersamplemvvm.ui.forecast.ForecastFragment"
         android:label="fragment_forecast"
-        tools:layout="@layout/fragment_forecast" />
+        tools:layout="@layout/fragment_forecast">
+
+        <argument
+            android:name="lat"
+            android:defaultValue="0"
+            app:argType="float" />
+        <argument
+            android:name="lon"
+            android:defaultValue="1"
+            app:argType="float" />
+        <argument
+            android:name="city"
+            android:defaultValue="1"
+            app:argType="string" />
+
+    </fragment>
 
 </navigation>

@@ -5,9 +5,13 @@
     <string name="lottie_loading_url">https://assets2.lottiefiles.com/packages/lf20_kxsd2ytq.json</string>
     <string name="lottie_network_failure_url">https://assets6.lottiefiles.com/packages/lf20_93UheN.json</string>
 
+    //Location permissions
+    <string name="accept_permission">You should accept permissions to see app\'s content</string>
+    <string name="enable_gps">You should enable GPS Location to see app\'s content</string>
+
     //WeatherFragment
     <string name="city_tv">%1$s. %2$s</string>
-    <string name="temp_tv">T %1$s º</string>
+    <string name="temp_tv">%1$s º</string>
     <string name="low_high_temp_tv">%1$s º</string>
     <string name="week_forecast">7-Day weather forecast</string>
     <string name="windchill_factor">Windchill factor</string>
@@ -24,6 +28,8 @@
     <string name="visibility_tv">%1$sm</string>
 
     //ForecastFragment
+    <string name="forecast_city_title">Next 7 days in %1$s</string>
+    <string name="tomorrow">Tomorrow</string>
 
 
 </resources>

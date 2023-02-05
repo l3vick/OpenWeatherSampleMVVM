@@ -39,6 +39,10 @@ class WeatherViewModel @Inject constructor(
         })
     }
 
+    fun getFakeCurrentLocation() {
+        locationLiveData.postValue(LocationData(40.416775, -3.703790))
+    }
+
     fun getWeatherByLocation(latitude: String, longitude: String) =
         viewModelScope.launch { safeGetWeatherByLocation(latitude, longitude) }
 

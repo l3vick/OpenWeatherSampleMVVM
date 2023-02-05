@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -28,11 +29,14 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>(
 
     private lateinit var locationProvider: LocationProvider
 
+    private var latitude = 0.0f
+    private var longitude = 0.0f
+    private var city = ""
+
     private var isGPSEnabled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setupLocation()
     }
 
@@ -42,12 +46,19 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>(
 
     override fun setupListeners() {
         binding?.incWeatherContent?.forecastBtn?.setOnClickListener {
-            navController.navigate(R.id.action_weatherFragment_to_forecastFragment)
+            val action = WeatherFragmentDirections.actionWeatherFragmentToForecastFragment(
+                latitude,
+                longitude,
+                city
+            )
+            navController.navigate(action)
         }
     }
 
     override fun setupObservers() {
         viewModel.locationLiveData.observe(this) {
+            latitude = it.latitude?.toFloat() ?: 0.0f
+            longitude = it.longitude?.toFloat() ?: 0.0f
             viewModel.getWeatherByLocation(it.latitude.toString(), it.longitude.toString())
         }
 
@@ -74,6 +85,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>(
     }
 
     private fun setupUI(data: ResponseWeather) {
+        city = data.name
         binding?.incWeatherContent?.weatherIv?.setImageResource(getDrawableResID(data.weather[0].icon))
         binding?.incWeatherContent?.cityTv?.text =
             getString(R.string.city_tv, data.name, data.sys.country)
@@ -100,32 +112,7 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>(
             getString(R.string.visibility_tv, data.visibility.toString())
     }
 
-    private fun getDrawableResID(icon: String): Int {
-        when (icon) {
-            WeatherIconCode.W01d.iconCode -> return R.drawable.w01d
-            WeatherIconCode.W01n.iconCode -> return R.drawable.w01n
-            WeatherIconCode.W02d.iconCode -> return R.drawable.w02d
-            WeatherIconCode.W02n.iconCode -> return R.drawable.w02n
-            WeatherIconCode.W03d.iconCode -> return R.drawable.w02d
-            WeatherIconCode.W03n.iconCode -> return R.drawable.w02n
-            WeatherIconCode.W04d.iconCode -> return R.drawable.w04
-            WeatherIconCode.W04n.iconCode -> return R.drawable.w04
-            WeatherIconCode.W09d.iconCode -> return R.drawable.w09
-            WeatherIconCode.W09n.iconCode -> return R.drawable.w09
-            WeatherIconCode.W10d.iconCode -> return R.drawable.w10d
-            WeatherIconCode.W10n.iconCode -> return R.drawable.w10n
-            WeatherIconCode.W11d.iconCode -> return R.drawable.w11
-            WeatherIconCode.W11n.iconCode -> return R.drawable.w11
-            WeatherIconCode.W13d.iconCode -> return R.drawable.w13
-            WeatherIconCode.W13n.iconCode -> return R.drawable.w13
-            WeatherIconCode.W50d.iconCode -> return R.drawable.w50
-            WeatherIconCode.W50n.iconCode -> return R.drawable.w50
-        }
-        return R.drawable.n_a
-    }
-
-    private fun setupLocation() {//checking GPS status
-
+    private fun setupLocation() {
         locationProvider = LocationProvider(activity as AppCompatActivity)
 
         GpsUtils(activity as AppCompatActivity).turnGPSOn(
@@ -135,16 +122,13 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>(
                     isGPSEnabled = isGPSEnable
                 }
             })
-    }
 
-    override fun onStart() {
-        super.onStart()
         invokeLocationAction()
     }
 
     private fun invokeLocationAction() {
         when {
-            !isGPSEnabled -> showToast(activity as AppCompatActivity, "Enable GPS", 1)
+            !isGPSEnabled -> showToast(activity as AppCompatActivity, getString(R.string.enable_gps), Toast.LENGTH_LONG)
 
             isPermissionsGranted() -> startLocationUpdate()
 
@@ -162,11 +146,9 @@ class WeatherFragment : BaseFragment<FragmentWeatherBinding>(
                 if (isGranted) {
                     viewModel.getCurrentLocation(locationProvider)
                 } else {
-                    // Explain to the user that the feature is unavailable because the
-                    // feature requires a permission that the user has denied. At the
-                    // same time, respect the user's decision. Don't link to system
-                    // settings in an effort to convince the user to change their
-                    // decision.
+                    showSnackbar(
+                        binding?.root as View ,getString(R.string.accept_permission)
+                    )
                 }
             }
         requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
