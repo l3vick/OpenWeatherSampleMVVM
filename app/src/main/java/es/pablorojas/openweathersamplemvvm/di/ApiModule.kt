@@ -7,6 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import es.pablorojas.openweathersamplemvvm.BuildConfig.API_KEY
 import es.pablorojas.openweathersamplemvvm.BuildConfig.BASE_URL
 import es.pablorojas.openweathersamplemvvm.network.WeatherApi
+import es.pablorojas.openweathersamplemvvm.utils.TEMP_UNIT
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -49,6 +50,7 @@ object ApiModule {
         override fun intercept(chain: Interceptor.Chain): Response {
             val url = chain.request().url.newBuilder()
                 .addQueryParameter("appid", API_KEY)
+                .addQueryParameter("units", TEMP_UNIT)
                 .build()
 
             val request = chain.request().newBuilder()

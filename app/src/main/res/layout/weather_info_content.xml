@@ -1,13 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_32">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/forecastBtn"
+        style="@style/button_outlined_rounded_corners"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/week_forecast"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/weatherIv"
+        android:layout_width="@dimen/icon_120"
+        android:layout_height="@dimen/icon_120"
+        android:layout_marginTop="@dimen/padding_24"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityTv" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/highTempIv"
+        android:layout_width="@dimen/icon_30"
+        android:layout_height="@dimen/icon_30"
+        android:layout_marginEnd="@dimen/padding_8"
+        android:src="@drawable/high_t"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/tempDescriptionTv"
+        app:layout_constraintEnd_toStartOf="@+id/highTempTv" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/lowTempIv"
+        android:layout_width="@dimen/icon_30"
+        android:layout_height="@dimen/icon_30"
+        android:layout_marginEnd="@dimen/padding_8"
+        android:src="@drawable/low_t"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tempDescriptionTv"
+        app:layout_constraintEnd_toStartOf="@+id/lowTempTv" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/sunriseIv"
+        android:layout_width="@dimen/icon_50"
+        android:layout_height="@dimen/icon_50"
+        android:layout_marginTop="@dimen/padding_64"
+        android:layout_marginEnd="@dimen/padding_32"
+        android:src="@drawable/sunrise"
+        app:layout_constraintEnd_toStartOf="@+id/sunsetIv"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tempDescriptionTv" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/sunsetIv"
+        android:layout_width="@dimen/icon_50"
+        android:layout_height="@dimen/icon_50"
+        android:layout_marginStart="@dimen/padding_32"
+        android:layout_marginTop="@dimen/padding_64"
+        android:src="@drawable/sunset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sunriseIv"
+        app:layout_constraintTop_toBottomOf="@+id/tempDescriptionTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cityTv"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tempTv"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding_16"
+        app:layout_constraintBottom_toTopOf="@id/lowTempTv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/highTempTv"
+        style="@style/text_main_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_8"
+        app:layout_constraintBottom_toBottomOf="@+id/tempDescriptionTv"
+        app:layout_constraintEnd_toStartOf="@+id/lowTempIv" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lowTempTv"
+        style="@style/text_main_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tempDescriptionTv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tempDescriptionTv"
+        style="@style/text_main_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/weatherIv"
+        app:layout_constraintStart_toStartOf="@+id/weatherIv"
+        app:layout_constraintTop_toBottomOf="@+id/weatherIv" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sunriseTv"
+        style="@style/text_main_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_16"
+        app:layout_constraintEnd_toEndOf="@+id/sunriseIv"
+        app:layout_constraintStart_toStartOf="@+id/sunriseIv"
+        app:layout_constraintTop_toBottomOf="@+id/sunriseIv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sunsetTv"
+        style="@style/text_main_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_16"
+        app:layout_constraintEnd_toEndOf="@+id/sunsetIv"
+        app:layout_constraintStart_toStartOf="@+id/sunsetIv"
+        app:layout_constraintTop_toBottomOf="@+id/sunsetIv" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/windchillLblTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_64"
+        android:text="@string/windchill_factor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sunsetTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/humidityLblTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_64"
+        android:text="@string/humidity"
+        app:layout_constraintEnd_toStartOf="@+id/cloudinessLblTv"
+        app:layout_constraintStart_toEndOf="@id/windchillLblTv"
+        app:layout_constraintTop_toBottomOf="@+id/sunsetTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cloudinessLblTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_64"
+        android:text="@string/cloudiness"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sunsetTv" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/windchillTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_16"
+        app:layout_constraintEnd_toEndOf="@+id/windchillLblTv"
+        app:layout_constraintStart_toStartOf="@+id/windchillLblTv"
+        app:layout_constraintTop_toBottomOf="@+id/windchillLblTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/humidityTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_16"
+        app:layout_constraintEnd_toEndOf="@+id/humidityLblTv"
+        app:layout_constraintStart_toStartOf="@+id/humidityLblTv"
+        app:layout_constraintTop_toBottomOf="@+id/humidityLblTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cloudinessTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_16"
+        app:layout_constraintEnd_toEndOf="@+id/cloudinessLblTv"
+        app:layout_constraintStart_toStartOf="@+id/cloudinessLblTv"
+        app:layout_constraintTop_toBottomOf="@+id/cloudinessLblTv" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/pressureLblTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_48"
+        android:text="@string/pressure"
+        app:layout_constraintEnd_toEndOf="@+id/windchillTv"
+        app:layout_constraintStart_toStartOf="@+id/windchillTv"
+        app:layout_constraintTop_toBottomOf="@+id/windchillTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/windSpeedLblTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_48"
+        android:text="@string/wind_speed"
+        app:layout_constraintEnd_toEndOf="@id/humidityTv"
+        app:layout_constraintStart_toStartOf="@+id/humidityTv"
+        app:layout_constraintTop_toBottomOf="@+id/windchillTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/visibilityLblTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_48"
+        android:text="@string/visibility"
+        app:layout_constraintEnd_toEndOf="@+id/cloudinessTv"
+        app:layout_constraintStart_toStartOf="@+id/cloudinessTv"
+        app:layout_constraintTop_toBottomOf="@+id/windchillTv" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/pressureTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_16"
+        app:layout_constraintEnd_toEndOf="@+id/pressureLblTv"
+        app:layout_constraintStart_toStartOf="@+id/pressureLblTv"
+        app:layout_constraintTop_toBottomOf="@+id/pressureLblTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/windSpeedTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_16"
+        app:layout_constraintEnd_toEndOf="@+id/windSpeedLblTv"
+        app:layout_constraintStart_toStartOf="@+id/windSpeedLblTv"
+        app:layout_constraintTop_toBottomOf="@+id/windSpeedLblTv" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/visibilityTv"
+        style="@style/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_16"
+        app:layout_constraintEnd_toEndOf="@+id/visibilityLblTv"
+        app:layout_constraintStart_toStartOf="@+id/visibilityLblTv"
+        app:layout_constraintTop_toBottomOf="@+id/visibilityLblTv" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,22 @@
     <dimen name="padding_8">8dp</dimen>
     <dimen name="padding_12">12dp</dimen>
     <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_24">24dp</dimen>
     <dimen name="padding_32">32dp</dimen>
+    <dimen name="padding_48">48dp</dimen>
+    <dimen name="padding_64">64dp</dimen>
+
+    <dimen name="progress_bar">150dp</dimen>
 
     <dimen name="text_12">12sp</dimen>
     <dimen name="text_16">16sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_30">30sp</dimen>
+    <dimen name="text_50">50sp</dimen>
+
+    <dimen name="icon_30">30dp</dimen>
+    <dimen name="icon_50">50dp</dimen>
+    <dimen name="icon_100">100dp</dimen>
+    <dimen name="icon_120">120dp</dimen>
 </resources>
